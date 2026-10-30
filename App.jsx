@@ -36,6 +36,27 @@ function Pagination({ currentPage, totalPages, onPrev, onNext }) {
     );
 }
 
+function MovieCard({ movie }) {
+    return (
+    <div className="movie-card">
+        <img src={IMAGE_URL + movie.poster_path} alt={movie.title} />
+        <h2>{movie.title}</h2>
+        <p>Release Date: {movie.release_date}</p>
+        <p>Rating: {movie.vote_average}</p>
+    </div>
+    );
+}
+
+function MovieList({ movies }) {
+    return (
+    <div className="movie-grid">
+        {movies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+        ))}
+    </div>
+    );
+}
+
 function App() {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
